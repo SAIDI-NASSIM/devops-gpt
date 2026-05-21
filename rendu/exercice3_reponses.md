@@ -28,20 +28,27 @@ Pour enregistrer un secret comme `OPENAI_API_KEY` de manière sécurisée sur Gi
 5.  Entrer `OPENAI_API_KEY` dans le champ **"Name"** et coller la valeur de votre clé dans le champ **"Value"**.
 6.  Cliquer sur **"Add secret"**. Le secret est maintenant stocké de manière chiffrée.
 
+Voici une capture d'écran illustrant l'interface de création de secret :
+
+![Création d'un secret sur GitHub](./secret_creation.png)
+
 **Question B : Syntaxe pour utiliser le secret dans le workflow**
 
-Pour injecter le secret comme variable d'environnement dans une étape du workflow, on utilise la syntaxe `${{ secrets.NOM_DU_SECRET }}`.
+Pour injecter le secret comme variable d'environnement, on utilise la syntaxe `${{ secrets.NOM_DU_SECRET }}`.
 
-Voici un exemple concret pour l'étape de déploiement :
+Nous avons appliqué cette syntaxe directement à l'étape de déploiement dans notre fichier `.github/workflows/main.yml` :
 
 ```yaml
-      - name: Déployer sur le serveur
+      - name: Simuler le déploiement (si tag)
         if: startsWith(github.ref, 'refs/tags/v')
         env:
-          # La clé API est injectée ici
+          # La clé API est injectée ici depuis les secrets GitHub
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: |
-          echo "Déploiement avec la clé API..."
-          # La variable $OPENAI_API_KEY est maintenant disponible
-          # pour vos scripts de déploiement.
+        run: echo "Déploiement en cours avec la clé API..."
 ```
+
+#### 3. Preuve d'exécution du Workflow
+
+Voici une capture d'écran montrant l'exécution réussie du workflow sur l'onglet "Actions" de GitHub après le push sur la branche `main`.
+
+![Preuve de l'exécution du workflow GitHub Actions](./actions_workflow.png)

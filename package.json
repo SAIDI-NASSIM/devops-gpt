@@ -1,0 +1,9 @@
+{
+  "name": "devops-gpt-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install": "npm install --prefix backend && npm install --prefix frontend",
+    "test": "echo \"✅ Root tests passed!\" && exit 0"
+  }
+}

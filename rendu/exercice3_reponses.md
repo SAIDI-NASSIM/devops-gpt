@@ -30,7 +30,7 @@ Pour enregistrer un secret comme `OPENAI_API_KEY` de manière sécurisée sur Gi
 
 Voici une capture d'écran illustrant l'interface de création de secret :
 
-![Création d'un secret sur GitHub](./secret_creation.png)
+![Création d'un secret sur GitHub](OPENAI_API_KEY_secret_creation.png)
 
 **Question B : Syntaxe pour utiliser le secret dans le workflow**
 
@@ -51,4 +51,8 @@ Nous avons appliqué cette syntaxe directement à l'étape de déploiement dans 
 
 Voici une capture d'écran montrant l'exécution réussie du workflow sur l'onglet "Actions" de GitHub après le push sur la branche `main`.
 
-![Preuve de l'exécution du workflow GitHub Actions](./actions_workflow.png)
+![Preuve de l'exécution du workflow GitHub Actions](github-actions.png)
+
+De plus, voici la preuve que l'étape de déploiement s'exécute bien lors de la création d'un tag, comme le montre le workflow déclenché par `v1.0.1`.
+
+![Preuve du déploiement sur tag](after-tag-deploy.png)
